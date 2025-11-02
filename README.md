@@ -2,6 +2,8 @@
 
 CLI tool sederhana untuk mengarsipkan file log dengan otomatis memberi timestamp, mengompresnya dalam format `.tar.gz`, dan menyimpannya dalam direktori arsip terpisah. Cocok untuk menjaga sistem tetap rapi tanpa kehilangan riwayat log penting.
 
+project page URL : https://roadmap.sh/projects/log-archive-tool
+
 ## ✨ Fitur
 
 * Mengarsipkan seluruh isi direktori log dalam satu perintah.
