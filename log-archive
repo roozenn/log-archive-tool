@@ -1,0 +1,35 @@
+#!/bin/bash
+
+# Cek apakah argumen (log directory) diberikan
+if [ $# -ne 1 ]; then
+    echo "Usage: $0 <log-directory>"
+    exit 1
+fi
+
+LOG_DIR="$1"
+ARCHIVE_DIR="logs_archive"
+LOG_FILE="archive_history.log"
+
+# Cek apakah directory log valid
+if [ ! -d "$LOG_DIR" ]; then
+    echo "Error: Directory '$LOG_DIR' tidak ditemukan!"
+    exit 1
+fi
+
+# Buat folder arsip kalo belum ada
+mkdir -p "$ARCHIVE_DIR"
+
+# Generate timestamp format YYYYMMDD_HHMMSS
+TIMESTAMP=$(date +"%Y%m%d_%H%M%S")
+ARCHIVE_NAME="logs_archive_${TIMESTAMP}.tar.gz"
+
+# Kompres log ke folder arsip
+tar -czf "$ARCHIVE_DIR/$ARCHIVE_NAME" -C "$LOG_DIR" .
+
+# Catet aktivitas di log file
+echo "[$(date)] - Archived $LOG_DIR to $ARCHIVE_DIR/$ARCHIVE_NAME" >> "$LOG_FILE"
+
+echo "✅ Berhasil! Arsip tersimpan di: $ARCHIVE_DIR/$ARCHIVE_NAME"
+echo "📝 Log aktivitas: $(pwd)/$LOG_FILE"
+
+
