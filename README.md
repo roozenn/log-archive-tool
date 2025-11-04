@@ -1,59 +1,64 @@
-# 📦 Log Archive Tool
-
-CLI tool sederhana untuk mengarsipkan file log dengan otomatis memberi timestamp, mengompresnya dalam format `.tar.gz`, dan menyimpannya dalam direktori arsip terpisah. Cocok untuk menjaga sistem tetap rapi tanpa kehilangan riwayat log penting.
-
 project page URL : https://roadmap.sh/projects/log-archive-tool
 
-## ✨ Fitur
+# 📦 Log Archive Tool
 
-* Mengarsipkan seluruh isi direktori log dalam satu perintah.
-* Memberi nama arsip otomatis berdasarkan tanggal & waktu:
-  `logs_archive_20251103_143022.tar.gz`
-* Menyimpan catatan (log) setiap aktivitas arsip ke file `archive_history.log`.
-* Ringan, cepat, dan hanya butuh Bash  tidak perlu dependensi eksternal.
+**Log Archive Tool** is a simple command-line utility for archiving log files automatically.  
+It adds a timestamp to each archive, compresses it into a `.tar.gz` file, and stores it in a dedicated directory — keeping your system organized without losing important log history.
 
-## 🚀 Instalasi
+---
 
-1. Clone repositori ini:
+## ✨ Features
 
+- 🔁 Archive entire log directories with a single command  
+- 🕒 Automatically timestamped archive names, e.g.:  
+  `logs_archive_20251103_143022.tar.gz`  
+- 🧾 Records every archive action in `archive_history.log`  
+- ⚡ Lightweight, fast, and requires only Bash — no external dependencies
+
+---
+
+## 🚀 Installation
+
+1. Clone the repository:
    ```bash
-   git clone https://github.com/nama-username/log-archive-tool.git
+   git clone https://github.com/your-username/log-archive-tool.git
    cd log-archive-tool
    ```
 
-2. (Opsional) Pasang secara global agar bisa dipanggil dari mana saja:
-
+2. (Optional) Install globally to run from anywhere:
    ```bash
    sudo cp log-archive /usr/local/bin/
    ```
 
-## 🛠️ Penggunaan
+---
 
+## 🛠️ Usage
+
+Run the tool with:
 ```bash
-log-archive <direktori-log>
+log-archive <log-directory>
 ```
 
-### Contoh:
-
+### Example:
 ```bash
-# Arsipkan log Nginx
+# Archive Nginx logs
 log-archive /var/log/nginx
 
-# Arsipkan log sistem (perlu sudo jika tidak punya akses)
+# Archive system logs (requires sudo)
 sudo log-archive /var/log
 ```
 
-> 💡 Pastikan direktori yang diberikan **benar-benar ada** dan berisi file log.
+> 💡 Make sure the target directory exists and contains log files.
 
-## 📂 Hasil yang Dihasilkan
+---
 
-Setelah dijalankan, tool ini akan membuat:
+## 📂 Output
 
-* Direktori `logs_archive/` (jika belum ada) → berisi file `.tar.gz`
-* File `archive_history.log` → berisi riwayat kapan arsip dibuat
+After running, the tool will generate:
+- A `logs_archive/` directory (if it doesn’t exist) — containing the compressed `.tar.gz` archives  
+- An `archive_history.log` file — recording when and where each archive was created  
 
-Contoh struktur setelah dijalankan:
-
+Example directory structure:
 ```
 log-archive-tool/
 ├── log-archive
@@ -63,18 +68,31 @@ log-archive-tool/
     └── logs_archive_20251103_143022.tar.gz
 ```
 
-## 📝 Catatan
-
-* Untuk mengarsipkan direktori sistem seperti `/var/log`, kamu mungkin perlu menjalankan dengan `sudo`.
-* Jika ingin otomatisasi harian, pertimbangkan menggunakan `cron`:
-
-  ```bash
-  # Jalankan setiap jam 2 pagi
-  0 2 * * * /usr/local/bin/log-archive /var/log
-  ```
-  
 ---
 
-Dibuat dengan 💻 untuk sistem berbasis Unix/Linux  termasuk WSL!
+## 🧭 Tips
+
+- Use `sudo` when archiving system directories like `/var/log`.  
+- To automate regular backups, add a cron job:
+   ```bash
+   # Run every day at 2 AM
+   0 2 * * * /usr/local/bin/log-archive /var/log
+   ```
 
 ---
+
+## 🤝 Contributing
+
+Contributions, suggestions, and feature ideas (like cloud upload or email notifications) are always welcome!  
+Feel free to open an issue or submit a pull request.
+
+---
+
+## ⚙️ License
+
+This project is licensed under the **MIT License**.  
+You are free to use, modify, and distribute it as you wish.
+
+---
+
+Built with 💻 for Unix/Linux systems — including WSL.
